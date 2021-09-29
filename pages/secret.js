@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
-import Forms from './forms';
+import Forms from '../components/forms';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
