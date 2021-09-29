@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
 
 const options = {
   providers: [
@@ -37,8 +37,8 @@ const options = {
     }),
   ],
   database: {
-    type: "sqlite",
-    database: ":memory:",
+    type: 'sqlite',
+    database: ':memory:',
     synchronize: true,
   },
 };

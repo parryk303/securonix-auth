@@ -44,7 +44,7 @@ const EditRaForm = ({ raForm }) => {
     useEffect(() => {
         const updateRaForm = async () => {
             try {
-                const res = await fetch(`/${router.query.id}`, {
+                const res = await fetch(`/api/raForms/${router.query.id}`, {
                     method: 'PUT',
                     headers: {
                         "Accept": "application/json",

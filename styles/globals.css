@@ -53,15 +53,39 @@ output {
   margin: auto;
 }
 
+.nav {
+ display: grid;
+ text-align: center;
+ align-items: center;
+ margin-left: 4%;
+}
+
 .navbar {
   padding: 20px;
   margin-bottom: 20px;
   background: #07224C;
   display: flex;
   justify-content: space-between;
-  src: url('/fonts/nimbus-sans-novas-dot/Nimbus-Sans-D-OT-Bold_32747.ttf');
+  font-family: 'HandelGo';
 }
 
+.logo, .loginout {
+  width: 25%;
+}
+
+#logo {
+  border: white;
+  border-radius: 50%;
+}
+
+#loginout {
+  width: 275px;
+}
+
+.logoGrid {
+  display: flex;
+  justify-content: space-between;
+}
 .navbar .create {
   color: #FF9E15;
   font-size: 1.5rem;
@@ -69,7 +93,10 @@ output {
 
 .navbar .navbar-brand {
   color: #FF9E15;
+  cursor: pointer;
   font-size: 2rem;
+  font-family: 'HandelGo';
+  min-width: 265px;
 }
 
 .navbar-brand:hover, .create:hover {
@@ -92,10 +119,21 @@ output {
   margin-top: 20px;
 }
 
+.raForm {
+  width: fit-content;
+}
+
+#raTitle {
+  padding-top: 3%;
+  padding-bottom: 2%;
+  font-size: 60px;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: repeat(2, 35%);
+  grid-gap: 30px;
+  justify-content: center;
 }
 
 #define{

@@ -47,12 +47,12 @@ const NewRaForm = () => {
                 const res = await fetch('/api/raForms', {
                     method: 'POST',
                     headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(form)
                 })
-                router.push("/secret");
+                router.push('/secret');
             } catch (error) {
                 console.log(error);
             }
@@ -94,7 +94,7 @@ const NewRaForm = () => {
     }
 
     return (
-        <div className="form-container">
+        <div className='form-container'>
             <h1>Risk Assessment Form</h1>
             <div>
                 {

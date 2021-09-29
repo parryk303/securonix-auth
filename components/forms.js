@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/client";
+import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/client';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import { Button, Card } from 'semantic-ui-react';
@@ -8,12 +8,12 @@ import { Button, Card } from 'semantic-ui-react';
 
 const Forms = ({ raForms }) => {
   return (
-    <div className="raForms-container">
-      <h1>Risk Assessment Forms</h1>
-        <div className="grid wrapper">
+    <div className='raForms-container'>
+      <h1 id='raTitle'>Risk Assessments</h1>
+        <div className='grid wrapper'>
           {raForms.map(raForm => {
             return (
-              <div key={raForm._id}>
+              <div className='raForm' key={raForm._id}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
