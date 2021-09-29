@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import React from 'react';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import Secret from './secret.js';
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -20,13 +21,7 @@ export default function Home() {
           </>
         )}
         {session && (
-          <>
-            Signed in as {session.user.email} <br />
-            <div>You can now access our super secret pages</div>
-            <button>
-              <Link href='/secret'>To the secret</Link>
-            </button>
-          </>
+          <Secret />
         )}
       </main>
     </div>
