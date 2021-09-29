@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Auth Examples</title>
+        <title>Securonix Risk Assessment</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -17,7 +17,6 @@ export default function Home() {
         {!session && (
           <>
             Not signed in <br />
-            <button onClick={signIn}>Sign In</button>
           </>
         )}
         {session && (
@@ -27,7 +26,6 @@ export default function Home() {
             <button>
               <Link href="/secret">To the secret</Link>
             </button>
-            <button onClick={signOut}>sign out</button>
           </>
         )}
       </main>

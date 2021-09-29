@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
+import Forms from './forms';
+import Link from 'next/link';
+import fetch from 'isomorphic-unfetch';
 
 export default function Secret() {
   const [session, loading] = useSession();
@@ -7,11 +10,10 @@ export default function Secret() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/secret");
+      const res = await fetch("/api/raForms");
       const json = await res.json();
-
-      if (json.content) {
-        setContent(json.content);
+      if (json.success) {
+        setContent(json.data);
       }
     };
     fetchData();
@@ -21,19 +23,16 @@ export default function Secret() {
 
   if (!session) {
     return (
-      <main>
-        <div>
-          <h1>You aren't signed in, please sign in first</h1>
-        </div>
-      </main>
+      <>
+        <h1>Please Login first</h1>
+      </>
     );
   }
   return (
-    <main>
-      <div>
-        <h1>Protected Page</h1>
-        <p>{content}</p>
-      </div>
-    </main>
+      <>
+      {content && (
+        <Forms raForms={content} />
+      )}
+    </>
   );
 }
