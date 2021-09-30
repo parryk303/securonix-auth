@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import { Button } from 'semantic-ui-react';
 
 const Navbar = () => {
   const [session, loading] = useSession();
@@ -18,12 +19,12 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <button id='loginout' className='navbar-brand' onClick={signOut}>Logout</button>
+          <Button id='loginout' onClick={signOut}>Logout</Button>
         </>
       ) : (
         <>
           <a href='https://www.securonix.com/'><img id='logo' src='/logo.jpg' alt='logo' height={100} /></a>
-          <button id='loginout' className='navbar-brand' onClick={signIn}>Login</button>
+          <Button id='loginout' onClick={signIn}>Login</Button>
         </>
       )}
     </nav>

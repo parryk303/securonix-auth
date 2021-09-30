@@ -1,11 +1,8 @@
 import fetch from 'isomorphic-unfetch';
+import GaugeChart from 'react-gauge-chart';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Confirm, Button, Loader, Card } from 'semantic-ui-react';
-
-const threatHunting = ['Establishing threat hunting goals', 'Current coverage of threat hunting goals', 'Hiring personnel dedicated to threat hunting', 'Formulating a threat hunting hypothesis', 'Acquiring specialized datasets and tools', 'Threat hunting training', 'SOC members who can develop needed cybersecurity scripts', 'Ability to scale threat hunting program', 'Utilizing full packet capture', 'Utilizing windows registry keys', 'Utilizing system memory'];
-
-const vulnerabilityManagement = ['Well Defined and maintained assets and their risk tolerance', 'Well Defined and maintained Application and their risk tolerance', 'Effective collaboration between IT & security teams', 'Sharing, communicating vulnerability with other teams', 'Completion of scanning all software', 'Completion of scanning all hardware', 'Completion of scanning all web applications', 'Identifying and prioritizing risk relative to the environment', 'Action tasks on devices to eliminate security risks', 'Deploying os & third-party patches', 'Deploying windows 10 feature updates', 'Remediating vulnerability']
 
 const RaForm = ({ raForm }) => {
     const [confirm, setConfirm] = useState(false);
@@ -49,112 +46,72 @@ const RaForm = ({ raForm }) => {
         else return 'green';
     }
 
+    const getAveTh = () => {
+        const total =
+        (Number(raForm.th0) + Number(raForm.th1) + Number(raForm.th2) + Number(raForm.th3) + Number(raForm.th4) +
+        Number(raForm.th5) + Number(raForm.th6) + Number(raForm.th7) + Number(raForm.th8) + Number(raForm.th9) +
+        Number(raForm.th10))
+        return (Math.round(total/12));
+    }
+    const thAve = getAveTh();
+    let thPercent = Number(`0.${thAve}`)
+    if (thAve === 100) {
+      thPercent = 1;
+    }
+
+    const getAveVm = () => {
+        const total =
+        (Number(raForm.vm0) + Number(raForm.vm1) + Number(raForm.vm2) + Number(raForm.vm3) + Number(raForm.vm4) +
+        Number(raForm.vm5) + Number(raForm.vm6) + Number(raForm.vm7) + Number(raForm.vm8) + Number(raForm.vm9) +
+        Number(raForm.vm10) + Number(raForm.vm11))
+        return (Math.round(total/12));
+    }
+    const vmAve = getAveVm();
+    let vmPercent = Number(`0.${vmAve}`)
+    if (vmAve === 100) {
+      vmPercent = 1;
+    }
+
+    const guageStyle = {
+        width: '75%',
+      }
+
     return (
         <div className='raForm-container'>
             {isDeleting
                 ? <Loader active />
                 :
                 <>
-                    <h1>{raForm.title}</h1>
-                    <h3>Threat Hunting</h3>
-                    <div className='ui centered grid' id='formView'>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th0)}> {`${threatHunting[0]}: ${raForm.th0}%`}</div>
-                            <div className='two wide two wide column' id='define'> Define </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th1)}>{`${threatHunting[1]}: ${raForm.th1}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th2)}>{`${threatHunting[2]}: ${raForm.th2}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th3)}>{`${threatHunting[3]}: ${raForm.th3}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th4)}>{`${threatHunting[4]}: ${raForm.th4}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th5)}>{`${threatHunting[5]}: ${raForm.th5}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th6)}>{`${threatHunting[6]}: ${raForm.th6}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th7)}>{`${threatHunting[7]}: ${raForm.th7}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th8)}>{`${threatHunting[8]}: ${raForm.th8}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th9)}>{`${threatHunting[9]}: ${raForm.th9}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.th10)}>{`${threatHunting[10]}: ${raForm.th10}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
+                    <h1 id='raTitle'>{raForm.title}</h1>
+                    <div className='raFormItem'>
+                      <h2 id='raHeader'>Threat Hunting: <span id={colorId(thAve)}>{thAve}%</span></h2>
+                      <div className='guage'>
+                      <GaugeChart
+                        style={guageStyle}
+                        id='gauge-chart3'
+                        nrOfLevels={5}
+                        colors={['#FF4C00', '#FF9E15', '#A2D683']}
+                        arcWidth={0.4}
+                        percent={thPercent}
+                        textColor='#07224C'
+                        hideText={true} />
+                      </div>
                     </div>
-                    <h3>Vulnerability Management</h3>
-                    <div className='ui centered grid' id='formView'>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm0)}> {`${vulnerabilityManagement[0]}: ${raForm.vm0}%`}</div>
-                            <div className='two wide column' id='define'> Define </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm1)}>{`${vulnerabilityManagement[1]}: ${raForm.vm1}%`}</div>
-                            <div className='two wide column' id='define'> Define </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm2)}>{`${vulnerabilityManagement[2]}: ${raForm.vm2}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm3)}>{`${vulnerabilityManagement[3]}: ${raForm.vm3}%`}</div>
-                            <div className='two wide column' id='manage'> Manage </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm4)}>{`${vulnerabilityManagement[4]}: ${raForm.vm4}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm5)}>{`${vulnerabilityManagement[5]}: ${raForm.vm5}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm6)}>{`${vulnerabilityManagement[6]}: ${raForm.vm6}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm7)}>{`${vulnerabilityManagement[7]}: ${raForm.vm7}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm8)}>{`${vulnerabilityManagement[8]}: ${raForm.vm8}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm9)}>{`${vulnerabilityManagement[9]}: ${raForm.vm9}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm10)}>{`${vulnerabilityManagement[10]}: ${raForm.vm10}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
-                        <div className='row'>
-                            <div className='fourteen wide column' id={colorId(raForm.vm11)}>{`${vulnerabilityManagement[11]}: ${raForm.vm11}%`}</div>
-                            <div className='two wide column' id='use'> Use </div>
-                        </div>
+
+                    <h3>Vulnerability Management: <span id={colorId(vmAve)}>{vmAve}%</span></h3>
+                    <div className='guage'>
+                    <GaugeChart
+                        style={guageStyle}
+                        id='gauge-chart3'
+                        nrOfLevels={5}
+                        colors={['#FF4C00', '#FF9E15', '#A2D683']}
+                        arcWidth={0.4}
+                        percent={vmPercent}
+                        textColor='#07224C'
+                        hideText={true} />
                     </div>
-                    <Button id='delete' color='red' onClick={open}>Delete</Button>
+
+                    <Button id='delete' onClick={open}>Delete</Button>
                 </>
             }
             <Confirm

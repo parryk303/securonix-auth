@@ -7,14 +7,14 @@ import fetch from 'isomorphic-unfetch';
 const Forms = ({ raForms }) => {
   return (
     <div className='raForms-container'>
-      <h1 id='raTitle'>Risk Assessments</h1>
+      <br />
       <div className='grid wrapper'>
         {raForms.map(raForm => {
           return (
             <div className='raForm' key={raForm._id}>
-              <Card>
+              <Card id='item'>
                 <Card.Content>
-                  <Card.Header>
+                  <Card.Header id='title'>
                     <Link href={`/${raForm._id}`}>
                       <a>{raForm.title}</a>
                     </Link>

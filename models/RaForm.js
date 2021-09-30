@@ -6,7 +6,7 @@ const RaFormSchema = new mongoose.Schema({
     required: [true, 'Please add a title'],
     unique: true,
     trim: true,
-    maxlength: [40, 'Title cannot be more than 40 characters']
+    maxlength: [15, 'Title cannot be more than 15 characters']
   },
   th0: {
     type: String,

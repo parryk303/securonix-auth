@@ -93,16 +93,16 @@ const NewRaForm = () => {
 
     return (
         <div className='form-container'>
-            <h1>Risk Assessment Form</h1>
+            <br />
             <div>
                 {
                     isSubmitting
                         ? <Loader active inline='centered' />
-                        : <Form id='formCont' onSubmit={handleSubmit}>
+                        : <Form onSubmit={handleSubmit}>
+                            <h2> Title </h2>
                             <Form.Input
                                 fluid
                                 error={errors.title ? { content: 'Please enter a title', pointing: 'below' } : null}
-                                label='Title'
                                 placeholder='Title'
                                 name='title'
                                 onChange={handleChange}
