@@ -1,7 +1,5 @@
 import RaForm from '../../../models/RaForm';
 import mongoose from 'mongoose';
-// import cors from 'cors';
-// cors()
 
 const connection = {};
 

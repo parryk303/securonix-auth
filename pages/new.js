@@ -3,12 +3,10 @@ import { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
-// import cors from 'cors';
-// cors()
 
 const threatHunting = ['Establishing threat hunting goals', 'Current coverage of threat hunting goals', 'Hiring personnel dedicated to threat hunting', 'Formulating a threat hunting hypothesis', 'Acquiring specialized datasets and tools', 'Threat hunting training', 'SOC members who can develop needed cybersecurity scripts', 'Ability to scale threat hunting program', 'Utilizing full packet capture', 'Utilizing windows registry keys', 'Utilizing system memory'];
 
-const vulnerabilityManagement = ['Well Defined and maintained assets and their risk tolerance', 'Well Defined and maintained Application and their risk tolerance', 'Effective collaboration between IT & security teams', 'Sharing, communicating vulnerability with other teams', 'Completion of scanning all software', 'Completion of scanning all hardware', 'Completion of scanning all web applications', 'Identifying and prioritizing risk relative to the environment', 'Action tasks on devices to eliminate security risks',  'Deploying os & third-party patches', 'Deploying windows 10 feature updates', 'Remediating vulnerability']
+const vulnerabilityManagement = ['Well Defined and maintained assets and their risk tolerance', 'Well Defined and maintained Application and their risk tolerance', 'Effective collaboration between IT & security teams', 'Sharing, communicating vulnerability with other teams', 'Completion of scanning all software', 'Completion of scanning all hardware', 'Completion of scanning all web applications', 'Identifying and prioritizing risk relative to the environment', 'Action tasks on devices to eliminate security risks', 'Deploying os & third-party patches', 'Deploying windows 10 feature updates', 'Remediating vulnerability']
 
 const NewRaForm = () => {
     const [form, setForm] = useState({
@@ -36,7 +34,7 @@ const NewRaForm = () => {
         vm9: '0',
         vm10: '0',
         vm11: '0',
-        });
+    });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
     const router = useRouter();
@@ -111,59 +109,59 @@ const NewRaForm = () => {
                             />
                             <h2> Threat Hunting </h2>
                             {
-                            threatHunting.map((question, index) => {
-                                const handleOnInput = () => {
-                                    let percent = document.getElementById(`th ${index}`).value;
-                                    document.getElementById(`thPercent ${index}`).innerHTML = `${percent}%`
-                                }
-                                return (
-                                  <div className='question' key={`th ${index}`}>
-                                    <p>
-                                    {question}: <output className='index' id={`thPercent ${index}`}>0%</output>
-                                    </p>
-                              <Form.Input
-                                id={`th ${index}`}
-                                type='range'
-                                defaultValue='0'
-                                min='0'
-                                max='100'
-                                label='Percent of Completion'
-                                name={`th${index}`}
-                                onInput={handleOnInput}
-                                onChange={handleChange}
-                                />
+                                threatHunting.map((question, index) => {
+                                    const handleOnInput = () => {
+                                        let percent = document.getElementById(`th ${index}`).value;
+                                        document.getElementById(`thPercent ${index}`).innerHTML = `${percent}%`
+                                    }
+                                    return (
+                                        <div className='question' key={`th ${index}`}>
+                                            <p>
+                                                {question}: <output className='index' id={`thPercent ${index}`}>0%</output>
+                                            </p>
+                                            <Form.Input
+                                                id={`th ${index}`}
+                                                type='range'
+                                                defaultValue='0'
+                                                min='0'
+                                                max='100'
+                                                label='Percent of Completion'
+                                                name={`th${index}`}
+                                                onInput={handleOnInput}
+                                                onChange={handleChange}
+                                            />
 
-                            </div>
-                                )
-                            })}
+                                        </div>
+                                    )
+                                })}
                             <h2> Vulnerability Management </h2>
                             {
-                            vulnerabilityManagement.map((question, index) => {
-                                const handleOnInput = () => {
-                                    let percent = document.getElementById(`vm ${index}`).value;
-                                    document.getElementById(`vmPercent ${index}`).innerHTML = `${percent}%`
-                                }
-                                return (
-                                  <div className='question' key={`vm ${index}`} >
-                                    <p>
-                                    {question}
-                                    </p>
-                              <Form.Input
+                                vulnerabilityManagement.map((question, index) => {
+                                    const handleOnInput = () => {
+                                        let percent = document.getElementById(`vm ${index}`).value;
+                                        document.getElementById(`vmPercent ${index}`).innerHTML = `${percent}%`
+                                    }
+                                    return (
+                                        <div className='question' key={`vm ${index}`} >
+                                            <p>
+                                                {question}
+                                            </p>
+                                            <Form.Input
 
-                                id={`vm ${index}`}
-                                type='range'
-                                defaultValue='0'
-                                min='0'
-                                max='100'
-                                label='Percent of Completion'
-                                name={`vm${index}`}
-                                onInput={handleOnInput}
-                                onChange={handleChange}
-                                />
-                                <output className='index' id={`vmPercent ${index}`}>0%</output>
-                            </div>
-                                )
-                            })}
+                                                id={`vm ${index}`}
+                                                type='range'
+                                                defaultValue='0'
+                                                min='0'
+                                                max='100'
+                                                label='Percent of Completion'
+                                                name={`vm${index}`}
+                                                onInput={handleOnInput}
+                                                onChange={handleChange}
+                                            />
+                                            <output className='index' id={`vmPercent ${index}`}>0%</output>
+                                        </div>
+                                    )
+                                })}
 
                             <Button id='create' type='submit'>Create</Button>
                         </Form>

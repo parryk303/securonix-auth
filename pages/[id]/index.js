@@ -2,8 +2,6 @@ import fetch from 'isomorphic-unfetch';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Confirm, Button, Loader, Card } from 'semantic-ui-react';
-// import cors from 'cors';
-// cors()
 
 const threatHunting = ['Establishing threat hunting goals', 'Current coverage of threat hunting goals', 'Hiring personnel dedicated to threat hunting', 'Formulating a threat hunting hypothesis', 'Acquiring specialized datasets and tools', 'Threat hunting training', 'SOC members who can develop needed cybersecurity scripts', 'Ability to scale threat hunting program', 'Utilizing full packet capture', 'Utilizing windows registry keys', 'Utilizing system memory'];
 
@@ -19,9 +17,9 @@ const RaForm = ({ raForm }) => {
             const raFormId = router.query.id;
             try {
                 const deleted = await fetch(`/api/raForms/${raFormId}`, {
-                    method: "Delete"
+                    method: 'Delete'
                 });
-                router.push("/secret");
+                router.push('/secret');
             } catch (error) {
                 console.log(error)
             }
@@ -52,7 +50,7 @@ const RaForm = ({ raForm }) => {
     }
 
     return (
-        <div className="raForm-container">
+        <div className='raForm-container'>
             {isDeleting
                 ? <Loader active />
                 :

@@ -1,8 +1,8 @@
+import { signIn, signOut, useSession } from 'next-auth/client';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import React from 'react';
 import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/client';
 import Secret from './secret.js';
 
 export default function Home() {
@@ -13,12 +13,9 @@ export default function Home() {
         <title>Securonix Risk Assessment</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <main className={styles.main}>
         {!session && (
-          <>
-            Not signed in <br />
-          </>
+          <>Not signed in</>
         )}
         {session && (
           <Secret />

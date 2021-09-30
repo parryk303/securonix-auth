@@ -3,12 +3,10 @@ import { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
-// import cors from 'cors';
-// cors()
 
 const threatHunting = ['Establishing threat hunting goals', 'Current coverage of threat hunting goals', 'Hiring personnel dedicated to threat hunting', 'Formulating a threat hunting hypothesis', 'Acquiring specialized datasets and tools', 'Threat hunting training', 'SOC members who can develop needed cybersecurity scripts', 'Ability to scale threat hunting program', 'Utilizing full packet capture', 'Utilizing windows registry keys', 'Utilizing system memory'];
 
-const vulnerabilityManagement = ['Well Defined and maintained assets and their risk tolerance', 'Well Defined and maintained Application and their risk tolerance', 'Effective collaboration between IT & security teams', 'Sharing, communicating vulnerability with other teams', 'Completion of scanning all software', 'Completion of scanning all hardware', 'Completion of scanning all web applications', 'Identifying and prioritizing risk relative to the environment', 'Action tasks on devices to eliminate security risks',  'Deploying os & third-party patches', 'Deploying windows 10 feature updates', 'Remediating vulnerability']
+const vulnerabilityManagement = ['Well Defined and maintained assets and their risk tolerance', 'Well Defined and maintained Application and their risk tolerance', 'Effective collaboration between IT & security teams', 'Sharing, communicating vulnerability with other teams', 'Completion of scanning all software', 'Completion of scanning all hardware', 'Completion of scanning all web applications', 'Identifying and prioritizing risk relative to the environment', 'Action tasks on devices to eliminate security risks', 'Deploying os & third-party patches', 'Deploying windows 10 feature updates', 'Remediating vulnerability']
 
 const EditRaForm = ({ raForm }) => {
     const [form, setForm] = useState({
@@ -47,12 +45,12 @@ const EditRaForm = ({ raForm }) => {
                 const res = await fetch(`/api/raForms/${router.query.id}`, {
                     method: 'PUT',
                     headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(form)
                 })
-                router.push("/secret");
+                router.push('/secret');
             } catch (error) {
                 console.log(error);
             }
@@ -93,7 +91,7 @@ const EditRaForm = ({ raForm }) => {
     }
 
     return (
-        <div className="form-container">
+        <div className='form-container'>
             <h1>Update Form</h1>
             <div>
                 {
@@ -110,61 +108,61 @@ const EditRaForm = ({ raForm }) => {
                             />
                             <h2> Threat Hunting </h2>
                             {
-                            threatHunting.map((question, index) => {
-                                const handleOnInput = () => {
-                                    let percent = document.getElementById(`th ${index}`).value;
-                                    document.getElementById(`thPercent ${index}`).innerHTML = `${percent}%`
-                                }
-                                let defaultValKey = `th${index}`
-                                const defaultValue = raForm[defaultValKey];
-                                return (
-                                  <div className='question' key={`th ${index}`}>
-                                    <p>
-                                    {question}: <output className='index' id={`thPercent ${index}`}>{`${defaultValue}%`}</output>
-                                    </p>
-                              <Form.Input
-                                id={`th ${index}`}
-                                type='range'
-                                defaultValue={defaultValue}
-                                min='0'
-                                max='100'
-                                label='Percent of Completion'
-                                name={`th${index}`}
-                                onInput={handleOnInput}
-                                onChange={handleChange}
-                                />
-                            </div>
-                                )
-                            })}
+                                threatHunting.map((question, index) => {
+                                    const handleOnInput = () => {
+                                        let percent = document.getElementById(`th ${index}`).value;
+                                        document.getElementById(`thPercent ${index}`).innerHTML = `${percent}%`
+                                    }
+                                    let defaultValKey = `th${index}`
+                                    const defaultValue = raForm[defaultValKey];
+                                    return (
+                                        <div className='question' key={`th ${index}`}>
+                                            <p>
+                                                {question}: <output className='index' id={`thPercent ${index}`}>{`${defaultValue}%`}</output>
+                                            </p>
+                                            <Form.Input
+                                                id={`th ${index}`}
+                                                type='range'
+                                                defaultValue={defaultValue}
+                                                min='0'
+                                                max='100'
+                                                label='Percent of Completion'
+                                                name={`th${index}`}
+                                                onInput={handleOnInput}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    )
+                                })}
                             <h2> Vulnerability Management </h2>
                             {
-                            vulnerabilityManagement.map((question, index) => {
-                                const handleOnInput = () => {
-                                    let percent = document.getElementById(`vm ${index}`).value;
-                                    document.getElementById(`vmPercent ${index}`).innerHTML = `${percent}%`
-                                }
-                                let defaultValKey = `vm${index}`
-                                const defaultValue = raForm[defaultValKey];
-                                return (
-                                  <div className='question' key={`vm ${index}`} >
-                                    <p>
-                                    {question}
-                                    </p>
-                              <Form.Input
-                                id={`vm ${index}`}
-                                type='range'
-                                defaultValue={defaultValue}
-                                min='0'
-                                max='100'
-                                label='Percent of Completion'
-                                name={`vm${index}`}
-                                onInput={handleOnInput}
-                                onChange={handleChange}
-                                />
-                                <output className='index' id={`vmPercent ${index}`}>{`${defaultValue}%`}</output>
-                            </div>
-                                )
-                            })}
+                                vulnerabilityManagement.map((question, index) => {
+                                    const handleOnInput = () => {
+                                        let percent = document.getElementById(`vm ${index}`).value;
+                                        document.getElementById(`vmPercent ${index}`).innerHTML = `${percent}%`
+                                    }
+                                    let defaultValKey = `vm${index}`
+                                    const defaultValue = raForm[defaultValKey];
+                                    return (
+                                        <div className='question' key={`vm ${index}`} >
+                                            <p>
+                                                {question}
+                                            </p>
+                                            <Form.Input
+                                                id={`vm ${index}`}
+                                                type='range'
+                                                defaultValue={defaultValue}
+                                                min='0'
+                                                max='100'
+                                                label='Percent of Completion'
+                                                name={`vm${index}`}
+                                                onInput={handleOnInput}
+                                                onChange={handleChange}
+                                            />
+                                            <output className='index' id={`vmPercent ${index}`}>{`${defaultValue}%`}</output>
+                                        </div>
+                                    )
+                                })}
                             <Button id='update' type='submit'>Update</Button>
                         </Form>
                 }

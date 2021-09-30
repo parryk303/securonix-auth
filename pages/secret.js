@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/client';
-import Forms from '../components/forms';
+import Forms from '../components/Forms';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
@@ -29,7 +29,7 @@ export default function Secret() {
     );
   }
   return (
-      <>
+    <>
       {content && (
         <Forms raForms={content} />
       )}
