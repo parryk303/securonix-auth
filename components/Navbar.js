@@ -22,7 +22,7 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <img id='logo' src='/logo.jpg' alt='logo' height={100} />
+          <img href='https://www.securonix.com/' id='logo' src='/logo.jpg' alt='logo' height={100} />
           <button id='loginout' className='navbar-brand' onClick={signIn}>Login</button>
         </>
       )}
