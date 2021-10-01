@@ -85,7 +85,7 @@ const RaForm = ({ raForm }) => {
         const doc = new jsPDF();
         doc.addImage('https://i.imgur.com/dISO4s0.jpeg', "JPEG", 30, 0, 150, 50), doc.setFont('helvetica', 'bold')
 
-        doc.text(`Risk Assessment Report for ${raForm.title} :`, 12, 50)
+        doc.text(`Risk Assessment Report for ${raForm.title} :`, 12, 55)
         doc.text(`Threat Hunting Average: ${thAve}%`, 12, 70), doc.setFont('helvetica', 'normal')
         doc.text(`${threatHunting[0]}: ....................................................... `, 12, 76)
         doc.text(`${raForm.vm0}%`, 186, 76)
