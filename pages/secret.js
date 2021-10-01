@@ -24,7 +24,8 @@ export default function Secret() {
   if (!session) {
     return (
       <>
-        <h1 id='raTitle'>Please login first</h1>
+        <br />
+        <h1 id='raTitle'>Please login</h1>
       </>
     );
   }

@@ -63,15 +63,25 @@ output {
 .navbar {
   padding: 20px;
   margin-bottom: 20px;
-  /* background: #07224C; */
   background-color: #146DB3;
   display: flex;
   justify-content: space-between;
   font-family: 'HandelGo';
+  margin-left: -10px;
+  width: 103%;
+  box-shadow: 0 10px 8px -6px black;
+  background-image: url("https://www.transparenttextures.com/patterns/micro-carbon.png");
+}
+
+#logo {
+  border: black;
+  border-radius: 6px;
+  background-color: white;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 #loginout {
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   color: #FF9E15;
   background-color: #07224C;
   cursor: pointer;
@@ -79,16 +89,12 @@ output {
   font-family: 'HandelGo';
   border-radius: 14px;
   max-width: 200px;
+  margin-right: 3%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 #loginout:hover {
   background-color: #DDF3F9;
-}
-
-#logo {
-  border: black;
-  border-radius: 50%;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .logoGrid {
@@ -108,9 +114,9 @@ output {
   font-family: 'HandelGo';
   min-width: 265px;
   background-color: #07224C;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   padding: 14px;
   border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .navbar-brand:hover, .create:hover {
@@ -119,17 +125,46 @@ output {
 
 #item {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  height: 200px;
+  margin-bottom: 30px;
+  background-color: white;
+  background-image: url("https://www.transparenttextures.com/patterns/retro-intro.png");
 }
 
 .form-container {
-  width: 70%;
+  width: 85%;
+  padding: 5%;
   margin: 20px auto;
   justify-content: center;
   text-align: center;
+  background-color: #359AD6;
+  border-radius: 6px;
+  background-image: url("https://www.transparenttextures.com/patterns/white-wave.png");
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 ::-webkit-input-placeholder {
   text-align: center;
+  font-family: 'HandelGo';
+  font-size: 60px;
+  color: #305a9ce1
+}
+
+#newTitle {
+  margin-top: -40px;
+  height: 150px;
+  text-align: center;
+  font-family: 'HandelGo';
+  font-size: 90px;
+  color: #07224C;
+}
+
+.newHeader {
+  font-size: 40px;
+  color: #DDF3F9;
+  font-family: 'Ubuntu-Medium';
+  text-shadow: 2px 7px 5px rgba(0,0,0,0.3),
+    0px -4px 10px rgba(255,255,255,0.3);
 }
 
 .raForm-container {
@@ -143,7 +178,15 @@ output {
 
 #title {
   text-align: center;
-  font-size: x-large;
+  margin-top: 20%;
+}
+
+#titleLink {
+  color: #07224C;
+  font-size: xx-large;
+  font-family: 'HandelGo';
+  text-shadow: 2px 7px 5px rgba(0,0,0,0.3),
+    0px -4px 10px rgba(255,255,255,0.3);
 }
 
 .extra {
@@ -152,15 +195,15 @@ output {
 }
 
 #raTitle {
-  padding-top: 3%;
-  padding-bottom: 2%;
-  font-size: 60px;
+  padding-top: 1%;
+  font-size: 80px;
+  font-family: 'HandelGo';
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 35%);
-  grid-gap: 30px;
+  grid-template-columns: repeat(3, 27%);
+  grid-gap: 5%;
   justify-content: center;
 }
 
@@ -214,14 +257,32 @@ output {
   justify-content: center;
 }
 
+#pdf{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  font-size: 15px;
+  font-family: 'Ubuntu-Medium';
+  color: #07224C;
+  padding: 1%;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+}
+
 #formView{
   width: 70%;
   margin-left: 15%;
 }
 
-#delete, #create, #update{
-  margin-top: 20px;
+#delete, #create, #update {
+  width: 70%;
+  padding: 2%;
+  margin-top: 30px;
   margin-bottom: 20px;
+  font-size: 50px;
+  font-family: 'Ubuntu-Medium';
+  color: #07224C;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 #delete {
@@ -234,11 +295,44 @@ output {
   width: 100%;
   background-color: #DDF3F9;
   padding: 3%;
+  font-size: 25px;
   font-family: 'nimbus-sans-novas-dot-light';
   color:#008cba
 }
 
-label{
-  color: #DDF3F9;
+#notice {
+  font-size: 50px;
 }
 
+#mobileLinks {
+  display: none;
+}
+
+#mobileNav {
+  display: none;
+  justify-content: space-evenly;
+  margin-top: -20px;
+}
+
+#mobileLogo {
+  display: none;
+  border: black;
+  border-radius: 50%;
+  margin-left: 25px;
+  margin-bottom: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+@media only screen and (max-width: 400px) {
+  #logo {display: none}
+  #mobileNav, #mobileLinks, #mobileLogo {display: flex}
+  .nav {display: none}
+  .nav {margin-left: -7px}
+  .navbar-brand {min-width: 50px}
+  .navbar-brand {margin: -30px 5px 0px 5px}
+  .grid {grid-template-columns: repeat(1, 70%) }
+  #item {margin-bottom: -40px}
+  #newTitle {font-size: 45px}
+  #newTitle {height: 70px}
+  #newTitle {margin-top: 15px}
+  #newHeader {font-size: 25px}
+}

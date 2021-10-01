@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         {!session && (
-          <>Not signed in</>
+          <h1 id='notice'>Not signed in</h1>
         )}
         {session && (
           <Secret />

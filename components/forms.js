@@ -16,7 +16,7 @@ const Forms = ({ raForms }) => {
                 <Card.Content>
                   <Card.Header id='title'>
                     <Link href={`/${raForm._id}`}>
-                      <a>{raForm.title}</a>
+                      <a id='titleLink'>{raForm.title}</a>
                     </Link>
                   </Card.Header>
                 </Card.Content>

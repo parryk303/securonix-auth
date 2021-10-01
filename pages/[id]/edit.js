@@ -66,7 +66,6 @@ const EditRaForm = ({ raForm }) => {
     }, [errors, isSubmitting, form, router])
 
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         let errs = validate();
@@ -92,21 +91,20 @@ const EditRaForm = ({ raForm }) => {
 
     return (
         <div className='form-container'>
-            <h1>Update Form</h1>
             <div>
                 {
                     isSubmitting
                         ? <Loader active inline='centered' />
                         : <Form onSubmit={handleSubmit}>
                             <Form.Input
+                                id='newTitle'
                                 fluid
                                 error={errors.title ? { content: 'Please enter a title', pointing: 'below' } : null}
-                                label='Title'
                                 placeholder={raForm.title}
                                 name='title'
                                 onChange={handleChange}
                             />
-                            <h2> Threat Hunting </h2>
+                            <h2 className='newHeader'> Threat Hunting </h2>
                             {
                                 threatHunting.map((question, index) => {
                                     const handleOnInput = () => {
@@ -134,7 +132,7 @@ const EditRaForm = ({ raForm }) => {
                                         </div>
                                     )
                                 })}
-                            <h2> Vulnerability Management </h2>
+                            <h2 className='newHeader'> Vulnerability Management </h2>
                             {
                                 vulnerabilityManagement.map((question, index) => {
                                     const handleOnInput = () => {

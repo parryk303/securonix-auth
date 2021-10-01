@@ -65,8 +65,6 @@ const NewRaForm = () => {
         }
     }, [errors, isSubmitting, form, router])
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         let errs = validate();
@@ -99,15 +97,15 @@ const NewRaForm = () => {
                     isSubmitting
                         ? <Loader active inline='centered' />
                         : <Form onSubmit={handleSubmit}>
-                            <h2> Title </h2>
                             <Form.Input
+                                id='newTitle'
                                 fluid
                                 error={errors.title ? { content: 'Please enter a title', pointing: 'below' } : null}
                                 placeholder='Title'
                                 name='title'
                                 onChange={handleChange}
                             />
-                            <h2> Threat Hunting </h2>
+                            <h2 className='newHeader'> Threat Hunting </h2>
                             {
                                 threatHunting.map((question, index) => {
                                     const handleOnInput = () => {
@@ -130,11 +128,10 @@ const NewRaForm = () => {
                                                 onInput={handleOnInput}
                                                 onChange={handleChange}
                                             />
-
                                         </div>
                                     )
                                 })}
-                            <h2> Vulnerability Management </h2>
+                            <h2 className='newHeader'> Vulnerability Management </h2>
                             {
                                 vulnerabilityManagement.map((question, index) => {
                                     const handleOnInput = () => {
@@ -147,7 +144,6 @@ const NewRaForm = () => {
                                                 {question}
                                             </p>
                                             <Form.Input
-
                                                 id={`vm ${index}`}
                                                 type='range'
                                                 defaultValue='0'
@@ -162,7 +158,6 @@ const NewRaForm = () => {
                                         </div>
                                     )
                                 })}
-
                             <Button id='create' type='submit'>Create</Button>
                         </Form>
                 }
