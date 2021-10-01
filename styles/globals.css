@@ -322,7 +322,8 @@ output {
   margin-bottom: 5px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-@media only screen and (max-width: 400px) {
+
+@media only screen and (max-width: 490px) {
   #logo {display: none}
   #mobileNav, #mobileLinks, #mobileLogo {display: flex}
   .nav {display: none}
@@ -330,9 +331,24 @@ output {
   .navbar-brand {min-width: 50px}
   .navbar-brand {margin: -30px 5px 0px 5px}
   .grid {grid-template-columns: repeat(1, 70%) }
-  #item {margin-bottom: -40px}
+  #item {margin-bottom: -20px}
+  #item {width: 170px}
   #newTitle {font-size: 45px}
   #newTitle {height: 70px}
   #newTitle {margin-top: 15px}
   #newHeader {font-size: 25px}
+  #titleLink {font-size: 30px}
 }
+
+@media only screen and (max-width: 1050px) {
+  #logo {display: none}
+  .navbar-brand {margin-top: 5px}
+  .navbar-brand {margin-bottom: 5px}
+  .grid {grid-template-columns: repeat(2, 50%) }
+}
+
+
+
+/* @media only screen and (max-width: 1050px) {
+
+} */
